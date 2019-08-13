@@ -1,32 +1,22 @@
 package com.cebon.cdjcy.log.service.impl;
 
-import com.cebon.cdjcy.common.core.AbstractService;
-import com.cebon.cdjcy.common.util.PoiUtils;
-import com.cebon.cdjcy.common.restResult.PageParam;
 import com.cebon.cdjcy.common.config.ApplicationConfig;
+import com.cebon.cdjcy.common.core.AbstractService;
+import com.cebon.cdjcy.common.restResult.PageParam;
 import com.cebon.cdjcy.log.dao.SysLogMapper;
 import com.cebon.cdjcy.log.domain.SysLog;
-import com.cebon.cdjcy.log.dto.SysLogExportDTO;
 import com.cebon.cdjcy.log.dto.SysLogInputDTO;
 import com.cebon.cdjcy.log.dto.SysLogOutpDTO;
 import com.cebon.cdjcy.log.service.SysLogService;
 import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -82,63 +72,4 @@ public class SysLogServiceImpl extends AbstractService<SysLog> implements SysLog
         sysLogMapper.deleteByExample(example);
     }
 
-    /**
-     * 分页导出日志
-     * @param inputDTO
-     * @return
-     */
-    @Override
-    public ResponseEntity<byte[]> exportLogList(SysLogInputDTO inputDTO) {
-        List<SysLogOutpDTO> data = sysLogMapper.selectLogByQuery(inputDTO);
-        Map<Integer, String> sysLogMap = applicationConfig.getLogOperation();
-        List<SysLogExportDTO> list = new ArrayList<>();
-        Long logId=1L;
-        for (SysLogOutpDTO sysLog: data) {
-            SysLogExportDTO exportDTO = new SysLogExportDTO();
-            exportDTO.setId(logId);
-            logId+=1L;
-            exportDTO.setOperation(sysLogMap.get(sysLog.getOperation()));
-            exportDTO.setUsername(sysLog.getUsername());
-            exportDTO.setLogDesc(sysLog.getLogDesc());
-            exportDTO.setCreateTime(sysLog.getCreateTime());
-            list.add(exportDTO);
-        }
-        String[] headers = {"序号","操作类型","操作者","操作详情","操作时间"};
-        PoiUtils poiUtils = new PoiUtils("日志列表", "日志导出模板.xls");
-        poiUtils.setHeaders(headers, "日志列表");
-
-        // 为excel表生成数据
-        poiUtils.fillDataAndStyle(list,2);
-        // 将内容返回响应
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        try {
-            poiUtils.getWorkbook().write(bos);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (bos != null) {
-                try {
-                    bos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-
-        // 文件名
-        String filename = "日志列表";
-        try {
-            filename = new String(filename.getBytes("gbk"), "iso8859-1");
-        } catch (UnsupportedEncodingException e) {
-            log.warn("不支持编码格式");
-            e.printStackTrace();
-
-        }
-        // 设置http响应头
-        HttpHeaders header = new HttpHeaders();
-        header.add("Content-Disposition", "attachment;filename=" + filename + ".xls");
-
-        return new ResponseEntity<byte[]>(bos.toByteArray(), header, HttpStatus.CREATED);
-    }
 }

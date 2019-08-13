@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="css/login.css" type="text/css">
+</head>
+<body>
+<form class="login-page" method="post" id="frm">
+    <div class="form">
+        <h3>账户登录</h3>
+        <input type="text" placeholder="用户名" name="username" required="required" id="username"/>
+        <input type="password" placeholder="密码" name="password" required="required" id="pwd"/>
+        <button type="submit">登录</button>
+    </div>
+</form>
+<script src="/js/common/jquery-2.1.4.min.js"></script>
+<script>
+
+    $(function () {
+        $("#frm").click(function () {
+            var username = $("#username").val();
+            var password = $("#pwd").val();
+            var parm = {'username': username, 'password': password};
+            $.ajax({
+                type: "POST",
+                url: "/login",
+                data: parm,
+                dataType: 'json',
+                success: function (msg) {
+                    if (msg.code == 200) {
+                        window.location.href = "/html/index.html";
+                    } else {
+                        $.messager.alert("提示信息", msg.message, "error");
+                    }
+                }, error: function (msg) {
+                    $.messager.alert("提示信息", msg.message, "error");
+                }
+            });
+            return false;
+        })
+
+    })
+</script>
+</body>
+</html>

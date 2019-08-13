@@ -38,7 +38,6 @@ public class MenuRightServiceImpl extends AbstractService<MenuRight> implements 
     private RoleMapper roleMapper;
 
 
-
     @Override
     public List<MenuRight> findByRoles(Set<Role> roles) {
         return null;
@@ -57,8 +56,8 @@ public class MenuRightServiceImpl extends AbstractService<MenuRight> implements 
     @Override
     public List<MenuRight> queryListByUrl(String url) {
         Example example = new Example(MenuRight.class);
-        example.and().andLike("url", url+"%");
-        return  menuRightMapper.selectByExample(example);
+        example.and().andLike("url", url + "%");
+        return menuRightMapper.selectByExample(example);
     }
 
     @Override
@@ -78,7 +77,7 @@ public class MenuRightServiceImpl extends AbstractService<MenuRight> implements 
      * 根据URL获取所有的权限
      */
     @Override
-    public List<MenuRight> findAllMenuRightByUrl(String url){
+    public List<MenuRight> findAllMenuRightByUrl(String url) {
         return menuRightMapper.findAllMenuRightByUrl(url);
     }
 
@@ -93,19 +92,22 @@ public class MenuRightServiceImpl extends AbstractService<MenuRight> implements 
     }
 
 
-
     //根据id查询权限菜单节点
     @Override
     public MenuRight findMenuRightById(long id) {
         return menuRightMapper.findMenuRightById(id);
     }
 
-   //添加一个权限节点
+    @Override
+    public List<MenuRight> findMenuRightByPid(long pid) {
+        return menuRightMapper.findMenuRightByPid(pid);
+    }
+
+    //添加一个权限节点
     @Override
     public void addMenuRight(MenuRight menuRight) {
         menuRightMapper.addMenuRight(menuRight);
     }
-
 
 
     //删除单个权限菜单节点
@@ -113,7 +115,13 @@ public class MenuRightServiceImpl extends AbstractService<MenuRight> implements 
     public void deleteMenuRight(long id) {
         menuRightMapper.deleteMenuRight(id);
     }
-   //修改单个权限菜单节点
+
+    @Override
+    public void deleteMenuRightByPid(long pid) {
+        menuRightMapper.deleteMenuRightByPid(pid);
+    }
+
+    //修改单个权限菜单节点
     @Override
     public void updateMenuRight(MenuRight menuRight) {
         menuRightMapper.updateMenuRight(menuRight);
@@ -121,113 +129,118 @@ public class MenuRightServiceImpl extends AbstractService<MenuRight> implements 
 
     //通过角色查询权限
     @Override
-    public MeunRightWebDTO findListByRoleId(long id) {
-
-        List<MenuRight> list=menuRightMapper.findListByRoleId(id);
-        return this.getMenuTree(list);
+    public List<MenuRight> findListByRoleId(long id) {
+        List<MenuRight> list = menuRightMapper.findListByRoleId(id);
+        return list == null ? new ArrayList<>() : list;
 
     }
 
     //获取当前用户权限菜单节点书
     @Override
-    public MeunRightWebDTO FindMenuRightWebDtO(long id) {
-        List<MenuRight> list=menuRightMapper.findListByUserId(id);
-        return this.getMenuTree(list);
+    public List<MenuRight> FindMenuRightWebDtO(long id) {
+        List<MenuRight> list = menuRightMapper.findListByUserId(id);
+        return list == null ? new ArrayList<>() : list;
 
     }
+
     //获取所有权限菜单节点树
-    public MeunRightWebDTO FindAllMenuRightWebDtO() {
-        List<MenuRight> list=menuRightMapper.findAllMenuRight();
-        return this.getMenuTree(list);
+    @Override
+    public List<MenuRight> FindAllMenuRightWebDtO() {
+        List<MenuRight> list = menuRightMapper.findAllMenuRight();
+        return list == null ? new ArrayList<>() : list;
     }
 
     //生成权限树方法
-    public MeunRightWebDTO getMenuTree(List<MenuRight> list){
+    public List<MenuRight> getMenuTree(List<MenuRight> list) {
+
+        return list;
         //封装一层
-        MeunRightWebDTO meunRightWebDTO=new MeunRightWebDTO();
-        List<FristMenuDTO> firstList=new ArrayList<>();
-        List<SecondMenuDTO> secondList=new ArrayList<>();
-        List<MenuRight>    thirdList=new ArrayList<>();
-        for ( MenuRight menu:list) {
-            if(menu.getGrades()==1){
-                firstList.add(FristMenuDTO.menuRight2MenuRightDTO(menu));
-            }
-            if(menu.getGrades()==2){
-                secondList.add(SecondMenuDTO.menuRight2MenuRightDTO(menu));
-            }
-            if(menu.getGrades()==3){
-                thirdList.add(menu);
-            }
-        }
-        meunRightWebDTO.setFristMenus(firstList);
 
-        //封装二层
-        List<FristMenuDTO> firstMenuList=meunRightWebDTO.getFristMenus();
-        for (FristMenuDTO first: firstMenuList) {
-            List<SecondMenuDTO> secondMenuDTOS=new ArrayList<>();
-            for (SecondMenuDTO   second :  secondList) {
-                if(first.getId()==second.getParentId()){
-                    secondMenuDTOS.add(second);
-                }
-            }
-            Integer type=1;
-            //查看权限id集合
-            List<Long> lookids1=new ArrayList<>();
-            //操作权限id集合
-            List<Long> handleIds1=new ArrayList<>();
-            //直接链接三级
-            for (MenuRight   third :  thirdList) {
-                if(third.getParentId()==first.getId()){
-                  if(third.getMethod().equals("get")){
-                        lookids1.add(third.getId());
-                    }else{
-                        type=2;
-                        handleIds1.add(third.getId());
-                    }
-                }
-            }
-            first.setType(type);
-            first.setFixedType(type);
-            first.setLookids(lookids1);
-            first.setHandleIds(handleIds1);
-            first.setSecondMenus(secondMenuDTOS);
-        }
-        meunRightWebDTO.setFristMenus(firstMenuList);
+        /**
 
-        //封装三层
-        firstMenuList=meunRightWebDTO.getFristMenus();
-        for (FristMenuDTO first: firstMenuList) {
-            List<SecondMenuDTO> secondMenuDTOS=first.getSecondMenus();
-            if(secondMenuDTOS!=null&&secondMenuDTOS.size()!=0){
-                for (SecondMenuDTO   second :  secondMenuDTOS) {
-                    //查看权限id集合
-                    List<Long> lookids=new ArrayList<>();
-                    //操作权限id集合
-                    List<Long> handleIds=new ArrayList<>();
-                    Integer type2=1;
-                    for (MenuRight   third :  thirdList) {
-                        if(second.getId()==third.getParentId()){
-                            if(third.getMethod().equals("get")){
-                                lookids.add(third.getId());
-                            }else{
-                                type2=2;
-                                handleIds.add(third.getId());
-                            }
-                        }
+         List<FristMenuDTO> firstList=new ArrayList<>();
+         List<SecondMenuDTO> secondList=new ArrayList<>();
+         List<MenuRight>    thirdList=new ArrayList<>();
+         for ( MenuRight menu:list) {
+         if(menu.getGrades()==1){
+         firstList.add(FristMenuDTO.menuRight2MenuRightDTO(menu));
+         }
+         if(menu.getGrades()==2){
+         secondList.add(SecondMenuDTO.menuRight2MenuRightDTO(menu));
+         }
+         if(menu.getGrades()==3){
+         thirdList.add(menu);
+         }
+         }
+         meunRightWebDTO.setFristMenus(firstList);
 
-                    }
-                    second.setType(type2);
-                    second.setFixedType(type2);
-                    second.setLookids(lookids);
-                    second.setHandleIds(handleIds);
-                }
-            }
+         //封装二层
+         List<FristMenuDTO> firstMenuList=meunRightWebDTO.getFristMenus();
+         for (FristMenuDTO first: firstMenuList) {
+         List<SecondMenuDTO> secondMenuDTOS=new ArrayList<>();
+         for (SecondMenuDTO   second :  secondList) {
+         if(first.getId()==second.getParentId()){
+         secondMenuDTOS.add(second);
+         }
+         }
+         Integer type=1;
+         //查看权限id集合
+         List<Long> lookids1=new ArrayList<>();
+         //操作权限id集合
+         List<Long> handleIds1=new ArrayList<>();
+         //直接链接三级
+         for (MenuRight   third :  thirdList) {
+         if(third.getParentId()==first.getId()){
+         if(third.getMethod().equals("get")){
+         lookids1.add(third.getId());
+         }else{
+         type=2;
+         handleIds1.add(third.getId());
+         }
+         }
+         }
+         first.setType(type);
+         first.setFixedType(type);
+         first.setLookids(lookids1);
+         first.setHandleIds(handleIds1);
+         first.setSecondMenus(secondMenuDTOS);
+         }
+         meunRightWebDTO.setFristMenus(firstMenuList);
 
-        }
+         //封装三层
+         firstMenuList=meunRightWebDTO.getFristMenus();
+         for (FristMenuDTO first: firstMenuList) {
+         List<SecondMenuDTO> secondMenuDTOS=first.getSecondMenus();
+         if(secondMenuDTOS!=null&&secondMenuDTOS.size()!=0){
+         for (SecondMenuDTO   second :  secondMenuDTOS) {
+         //查看权限id集合
+         List<Long> lookids=new ArrayList<>();
+         //操作权限id集合
+         List<Long> handleIds=new ArrayList<>();
+         Integer type2=1;
+         for (MenuRight   third :  thirdList) {
+         if(second.getId()==third.getParentId()){
+         if(third.getMethod().equals("get")){
+         lookids.add(third.getId());
+         }else{
+         type2=2;
+         handleIds.add(third.getId());
+         }
+         }
 
-        meunRightWebDTO.setFristMenus(firstMenuList);
+         }
+         second.setType(type2);
+         second.setFixedType(type2);
+         second.setLookids(lookids);
+         second.setHandleIds(handleIds);
+         }
+         }
 
-        return meunRightWebDTO;
+         }
+
+         meunRightWebDTO.setFristMenus(firstMenuList);
+         return meunRightWebDTO;
+         **/
     }
 
 

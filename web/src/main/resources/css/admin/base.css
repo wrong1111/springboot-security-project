@@ -1,0 +1,306 @@
+@charset "utf-8";
+
+/* CSS Document */
+body{font-size:12px;font-family:"微软雅黑",Verdana,Arial, Helvetica, sans-serif;color:#666}
+html, body, div, span, h1, h2, h3, h4, h5, h6, em, img, strong, sub, sup, tt,dd, ol,dl, dt, form, label, table, caption, tbody, tfoot, thead, tr, th, td, ul, li, p, a, section, article, aside, header, footer, nav, dialog, figure,menu{ margin:0;padding:0}
+i,em,s{font-style:normal; text-decoration:none}
+button{ cursor:pointer;border:none}
+section, article, aside, header, footer, nav, dialog, figure,menu,.Top_r a{display: block}
+input,select,textarea{vertical-align:middle;outline:none}
+img{border:0;vertical-align:middle}
+ul,li{list-style-type:none}
+html{
+	color:#000;background:#fff;
+	-webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+	margin:0;padding:0;
+}
+
+/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+/* HTML5 媒体文件跟 img 保持一致 */
+audio,canvas,video {
+    display: inline-block;*display: inline;*zoom: 1;
+}
+
+/* 要注意表单元素并不继承父级 font 的问题 */
+body,button,input,select,textarea{
+	font:12px/1.5 "微软雅黑",Verdana, Arial, Helvetica, sans-serif;
+	color:#666;
+}
+input,select,textarea{
+	font-size:100%;
+}
+
+/* 去掉各Table  cell 的边距并让其边重合 */
+table{
+	/*--border-collapse:collapse;--*/
+	border-spacing:0;
+}
+
+/* IE bug fixed: th 不继承 text-align*/
+th{
+	text-align:inherit;
+}
+
+/* 去除默认边框 */
+fieldset,img{
+	border:0;
+}
+
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe{
+	display:block;
+}
+
+/* 去掉 firefox 下此元素的边框 */
+abbr,acronym{
+	border:0;font-variant:normal;
+}
+
+/* 一致的 del 样式 */
+del {
+	text-decoration:line-through;
+}
+
+address,caption,cite,code,dfn,em,th,var {
+	font-style:normal;
+	font-weight:500;
+}
+
+/* 去掉列表前的标识, li 会继承 */
+ol,ul {
+	list-style:none;
+}
+
+/* 对齐是排版最重要的因素, 别让什么都居中 */
+caption,th {
+	text-align:left;
+}
+
+/* 来自yahoo, 让标题都自定义, 适应多个系统应用 */
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:500;
+}
+
+q:before,q:after {
+	content:'';
+}
+/* 统一上标和下标 */
+sub, sup {
+    font-size: 75%; line-height: 0; position: relative; vertical-align: baseline;
+}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+a{text-decoration:none;outline:none;color:#666}
+.clear{clear:both}
+.clearAll{ clear: both; display: block; float: none; font-size: 0; overflow: hidden; visibility: hidden; width: 0; height: 0;}
+.fl{float:left}   /*左浮动*/
+.fr{float:right}	/*右浮动*/
+.tl{text-align:left}	/*文字左对齐*/
+.tc{text-align:center}	/*文字居中对齐*/
+.tr{text-align:right}	/*文字右对齐*/
+.clearfix{zoom:1}
+.bold{font-weight:bold}
+.pr{position:relative;z-index:20;}
+.pa{position:absolute}
+.line_block a,.blog a,.nav li a{display:inline-block}
+.block{display:block}
+.999,.login a{ color:#999;}
+font14,.nav li a,.footer_title{ font-size:14px;}
+/*---
+	Update 2013.10.8 by wangpei
+-*/
+.logo11x5,.checkedbox,.tzBg1,.tzBg2,.tzBg3,.tzBg4,.tzBg5,.tzBg6,.wh,button.click,.slideUpdown{background:url(../images/fst.gif) repeat-x;display:inline-block;}
+.JaskTips,
+.checkboxSmall,
+.cbWid,
+.cbLarge,
+.filterCenter li a,
+.btnWP5,
+.radio1{background:url(../images/main.gif) no-repeat; display:inline-block;}
+.atdu{text-decoration:underline;}  /*--超链接带下划线--*/
+.bld{border-left: 1px dashed #CCCCCC;}  /*--左边框虚线--*/
+.tal{text-align:left;}   /*--左对齐--*/
+.tac{text-align:center;}
+.tar{text-align:right;}
+.cH10{height:10px;}  /*--clear类高度10--*/
+.cH15{height:15px;}
+.cH20{height:20px;}
+.dil{display:inline;}
+
+/*--checkbox--*/
+.checkedbox{height:18px;background-position:-270px -47px; vertical-align:middle;padding-left:20px;margin-right:10px;cursor:pointer;line-height:18px; _line-height:22px;}
+.checked{height:18px;background-position:-41px -47px;}
+.checkboxSmall{vertical-align:middle;width:16px;height:16px;margin:0 3px; display:inline-block;background-position:-320px -98px; cursor:pointer;}
+.cbsChecked{background-position:-340px -98px; }
+.cbsDisabled{background-position:-360px -98px; cursor:default;}
+
+.cbWid{margin:3px; border:2px solid #ccc;background-position:right -511px; height:19px; line-height:19px; padding:0 18px; cursor:pointer;}
+.cbwChecked{border:2px solid #7FA6CC;background-position:right -541px;}
+.cbwDisabled{border:2px dotted #ddd; background:none; color:#999; cursor:default}
+
+.cbLarge{background-position:right -613px; height:42px; overflow:hidden; border:1px solid #ccc; cursor:pointer;}
+.cblSelected{background-position:right -564px; height:40px; background-color:#f2fbff; border:2px solid #89C4EC; }
+
+.radio1{height:18px; vertical-align:middle; padding-left:20px; cursor:pointer; background-position:0 -560px;}
+.radio1Ckd{background-position:0 -620px;}
+
+/*--Padding Margin--*/
+.pl10{padding-left:10px;}
+.pl20{padding-left:20px;}
+.pl30{padding-left:30px;}
+.pt10{padding-top:10px;}
+.pt15{padding-top:15px;}
+.ml5{margin-left:5px;}
+.ml10{margin-left:10px;}
+.mrn{margin-right:0;}
+.mr10{margin-right:10px;}
+.mt5{margin-top:5px;}
+.mt6{margin-top:6px;}
+.mt7{margin-top:7px;}
+.mt8{margin-top:8px;}
+.mt9{margin-top:9px;}
+.mt10{margin-top:10px;}
+
+/*--border--*/
+.bAll{border:1px solid #ccc;}
+.nbl{border-left:none;}
+.nbb{border-bottom:none;}
+.nbt{border-top:none;}
+
+/*--z-index--*/
+.z900,
+.z800,
+.z700,
+.z600,
+.z500,
+.z400{position:relative;}
+.z900{z-index:900;}
+.z800{z-index:800;}
+.z700{z-index:700;}
+.z600{z-index:600;}
+.z500{z-index:500;}
+.z400{z-index:400;}
+
+/*--hide--*/
+.hid{display:none;}
+/*--字体颜色--*/
+.c1681c0, a.c1681c0{color:#1681c0;}
+.ccc0000,
+a.ccc0000,
+.red{color:#cc0000;}  /*--红--*/
+.c009900, a.c009900{color:#009900;}	/*--绿--*/
+.c2a9cdf, a.c2a9cdf,
+.c06c, a.c06c{color:#2a9cdf;} /*--蓝--*/
+.tNum{font-family: Verdana;}
+
+/*--模拟下拉菜单--*/
+ul.Jselect{border-left:1px solid #a5c4cb;height:30px;vertical-align:middle;}
+ul.Jselect li{width:100px;height:28px;border:1px solid #a5c4cb;border-left:none;;float:left;background:#f0f8fd}
+ul.Jselect li div{line-height:28px;text-indent: 6px; text-align:left;}
+ul.Jselect li.select{background:#fff;text-align:center;cursor:pointe;z-index:5;position:relative;}
+ul.Jselect li.select b{width:0;height:0;overflow:hidden;border:5px solid #fff;border-top:5px solid #666;margin:13px 8px 0 0;cursor:pointer;float:right}
+ul.Jselect dl{width:100px;border:1px solid #A5C4CB;background:#fff;position:absolute;position:absolute;left:-1px;top:28px;text-align:left;text-indent:11px;display:none}
+ul.Jselect dd{border-bottom:1px solid #A5C4CB; line-height:25px;cursor:pointer;}
+ul.Jselect dd:hover,.hide s:hover{background:#f0f0f0}
+ul.Jselect li.select b{margin-top:12px;}
+ul.Jselect dl{top:23px}
+ul.Jselect dd{line-height:23px;}
+
+ul.Jselect25{height:25px;}
+ul.Jselect25 li{height:23px;}
+ul.Jselect25 li div{line-height:23px;}
+ul.Jselect25 li.select b{margin-top:10px;}
+
+ul.JselectW50,ul.JselectW50 li, ul.JselectW50 dl{width:50px;}
+ul.JselectW50 li div{text-indent:5px;}
+
+ul.JselectW80,ul.JselectW80 li, ul.JselectW80 dl{width:80px;}
+ul.JselectW80 li div{text-indent:8px;}
+
+
+/*--问号提示--*/
+.JaskTips{width:19px;height:18px;cursor:help;background-position:0 -500px;margin-right:10px;line-height:18px; *zoom:1; *display:inline; vertical-align:middle; position:relative; z-index:10;}
+.JaskTips i{position:absolute; left:20px; top:0; width:200px; padding:5px; border:1px solid #6699CC; background:#F2FBFF; z-index:999; display:none;}
+
+/*--table1--*/
+.dataTable1{width:100%;display:table;}
+.dataTable1 .line1 td{border-bottom:1px dashed #89c4ec;}
+.dataTable1 td{padding:7px 8px;}
+.dataTable1 td.tit1{background:#cfe3f2;color:#006699; text-align:center;}
+.dataTable1 .lineLeft{border-left:1px solid #89c4ec;}
+
+/*--input & button--*/
+.iptStyle1{border:1px solid #a5c4cb; background:#fff; height:20px; line-height:20px; padding:0 7px; vertical-align:middle;}
+.iptW20{width:20px;}
+.iptW40{width:40px; +width:34px;}
+.iptW120{width:120px;}
+
+.iptStyle2{border:1px solid #ccc; background:#fff; height:25px; line-height:25px; padding:0 7px; width:90px; vertical-align:middle;}
+
+.iptStyle3{height:25px; line-height:25px;}
+
+.tArea{border:1px solid #a5c4cb;}
+.tArea1{border:1px solid #e3e3e3; background:#fbfbfb; padding:10px;}
+
+.btnWP{display:inline-block; height:25px; line-height:25px;background:#ddd;padding:0 10px; vertical-align:middle;}
+.btnWP1,
+a.btnWP1,
+.listDataTable1 td a.btnWP1{display:inline-block; height:20px; color:#fff; line-height:20px;background:#8eb4e7;padding:0 15px;}
+
+.btnWP2,
+a.btnWP2{background:#8eb4e7; display:inline-block; padding:2px 4px; color:#fff;}
+.btnWP2 strong,
+a.btnWP2 strong{color:#1681c0;}
+
+.btnWP3,
+.btnWP4{display:inline-block; padding:2px 3px; margin-right:4px;}
+.btnWP3{background:#6699cc; color:#fff;}
+.btnWP4{background:#ddd;}
+
+.btnWP5{height:17px; line-height:17px; background-position:right -690px; padding-right:20px;}
+
+
+
+/*--p--*/
+.pPtb{padding:6px 0;display:block;clear:both; line-height:30px;}
+.pplr{padding-left:10px; padding-right:10px; line-height:22px;}
+
+/*--加减--*/
+.noteBox{margin:0 auto; width:120px; height:22px; border:1px solid #a5c4cb; overflow:hidden; }
+.noteBox .plus,
+.noteBox .minus{display:block; float:left; width:20px; height:22px; font-size:14px; font-weight:bold; background:#f8f8f8}
+.noteBox .plus{border-left:1px solid #a5c4cb;}
+.noteBox .minus{border-right:1px solid #a5c4cb;}
+.noteBox input{float:left; width:78px; height:22px; line-height:22px; text-align:center; border:0;}
+
+/*--Title--*/
+.wTitle{background:#fffef7; padding:5px 10px; border:1px solid #ccc;}
+.wTbbd{border-bottom:1px dotted #ccc;}
+.wTbtd{border-top:1px dotted #ccc;}
+.wTnblr{border-left:none; border-right:none;}
+
+/*--Background--*/
+.bgGreen,
+.bgRed{display:inline-block; padding:2px 4px; color:#fff;}
+.bgGreen{background:#669900;}
+.bgRed{background:#B60000;}
+
+/*--uiBox--*/
+.ui-box{border:1px solid #ccc; border-bottom:none;}
+.ui-box .ui-box-head{border-bottom:1px solid #ccc; height:16px; line-height:16px; padding:5px 10px;}
+.ui-box .ui-box-head .ui-box-head-more{float:right;}
+.ui-box .ui-box-container{border-bottom:1px solid #ccc;}
+.ui-box .ui-box-container .ui-box-content{padding:10px;}
+
+/*--positon--*/
+.por{position:relative;}

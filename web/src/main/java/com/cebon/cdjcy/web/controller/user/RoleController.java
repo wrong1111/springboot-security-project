@@ -286,9 +286,10 @@ public class RoleController {
 
     //封装权限集合
     public List<Long> getMenuList(MeunWebDTO MeunWebDTO){
-
-        System.out.println(MeunWebDTO.getSecondMenuDTOS());
         List<Long> menuList=new ArrayList<>();
+
+        System.out.println("===============要修改");
+        /*
 
         MeunRightWebDTO meunRightWebDTO=menuRightService.FindAllMenuRightWebDtO();
 
@@ -327,7 +328,7 @@ public class RoleController {
                 }
             }
         }
-
+*/
 
         return  menuList;
     }

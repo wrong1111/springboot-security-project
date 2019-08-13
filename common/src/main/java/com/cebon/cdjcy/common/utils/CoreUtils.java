@@ -202,13 +202,11 @@ public class CoreUtils {
     public static String getModule(Integer type){
         switch (type){
             case 1: return "首页";
-            case 2: return "办公系统";
-            case 3: return "办案系统";
-            case 4: return "视频录像";
+            case 2: return "菜单管理";
+            case 3: return "会员管理";
+            case 4: return "角色管理";
             case 5: return "基础管理";
-            case 6: return "报警管理";
             case 7: return "系统管理";
-            case 8: return "运维管理";
             default: return "未指定模块";
         }
     }

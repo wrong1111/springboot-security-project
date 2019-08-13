@@ -34,8 +34,8 @@ public class MenuRight implements Serializable {
     @ApiModelProperty(value="排序",name="seq")
     private Integer seq;
 
-    @ApiModelProperty(value="访问地址",name="url")
-    private String url;
+    @ApiModelProperty(value="访问地址",name="urlpath")
+    private String urlpath;
 
     @ApiModelProperty(value="是否有效 ",name="isvisible",example = "1-有效,-1无效")
     private Integer isvisible;

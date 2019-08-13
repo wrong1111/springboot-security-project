@@ -80,6 +80,13 @@ public interface MenuRightService extends Service<MenuRight> {
     public MenuRight findMenuRightById(long id);
 
     /**
+     * 根据id查询权限菜单节点
+     * @param pid 权限菜单节点id
+     * @return  MenuRight 权限菜单信息
+     */
+    public List<MenuRight> findMenuRightByPid(long pid);
+
+    /**
      * 添加一个权限节点
      * @param menuRight  权限菜单实体对象
      */
@@ -90,6 +97,12 @@ public interface MenuRightService extends Service<MenuRight> {
      * @param id  权限菜单id
      */
     public  void deleteMenuRight(long id);
+
+    /**
+     * 删除单个权限菜单节点
+     * @param pid  权限菜单id
+     */
+    public  void deleteMenuRightByPid(long pid);
 
     /**
      * 修改单个权限菜单节点
@@ -103,15 +116,15 @@ public interface MenuRightService extends Service<MenuRight> {
      * @param id 用户id
      * @return MeunRightWebDTO权限书
      */
-    public MeunRightWebDTO FindMenuRightWebDtO(long id);
+    public List<MenuRight> FindMenuRightWebDtO(long id);
 
     //获取所有权限菜单节点树
-    public MeunRightWebDTO FindAllMenuRightWebDtO();
+    public List<MenuRight> FindAllMenuRightWebDtO();
 
     /**
      * 通过角色查询权限
      * @param id  角色id
      * @return 权限菜单集合
      */
-    public MeunRightWebDTO findListByRoleId(long id);
+    public List<MenuRight> findListByRoleId(long id);
 }

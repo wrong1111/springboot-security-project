@@ -71,7 +71,7 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
             BeanUtils.copyProperties(menu, menuDTO);
             menuDTO.setId(menu.getId());
             menuDTO.setParentId(menu.getParentId());
-            menuDTO.setPath(menu.getUrl());
+            menuDTO.setPath(menu.getUrlpath());
             menuDTO.setDisabled(false);
             for (MenuRight m : userMenus) {
                 if (null != m && menu.getId().equals(m.getId())){

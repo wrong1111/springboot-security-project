@@ -31,9 +31,9 @@ public class WebConfigration implements  WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //处理的路径规则
-        registry.addResourceHandler("/cdjcy/**")
+        registry.addResourceHandler("/login/login.html","/js/**","/css/**","/images/**","/html/**")
                 //到哪些目录下去查找静态资源
-                .addResourceLocations("classpath:/cdjcy/");
+                .addResourceLocations("classpath:/login/","classpath:/js/","classpath:/css/","classpath:/images/","classpath:/html/");
     }
 
 }

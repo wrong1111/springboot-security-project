@@ -23,7 +23,7 @@ public class MenuRightDTO implements Serializable{
     private Date modifyTime;
     private Date createTime;
     private Integer seq;
-    private String url;
+    private String urlpath;
     private Integer isvisible = 1;
     private String icon;
     private String method;
@@ -36,7 +36,7 @@ public class MenuRightDTO implements Serializable{
                 .id(menuRight.getId())
                 .name(menuRight.getName())
                 .parentId(menuRight.getParentId())
-                .url(menuRight.getUrl())
+                .urlpath(menuRight.getUrlpath())
                 .isvisible(menuRight.getIsvisible())
                 .icon(menuRight.getIcon())
                 .seq(menuRight.getSeq())

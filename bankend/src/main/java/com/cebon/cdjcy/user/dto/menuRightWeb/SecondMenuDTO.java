@@ -41,7 +41,7 @@ public class SecondMenuDTO implements Serializable {
 
 
     // 访问地址
-    private String url;
+    private String urlpath;
 
 
     // 是否有效 1-有效 -1无效（不可使用）
@@ -77,7 +77,7 @@ public class SecondMenuDTO implements Serializable {
                 .id(menuRight.getId())
                 .name(menuRight.getName())
                 .parentId(menuRight.getParentId())
-                .url(menuRight.getUrl())
+                .urlpath(menuRight.getUrlpath())
                 .isvisible(menuRight.getIsvisible())
                 .icon(menuRight.getIcon())
                 .seq(menuRight.getSeq())

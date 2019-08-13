@@ -80,7 +80,7 @@ public class FristMenuDTO implements Serializable {
                 .id(menuRight.getId())
                 .name(menuRight.getName())
                 .parentId(menuRight.getParentId())
-                .url(menuRight.getUrl())
+                .url(menuRight.getUrlpath())
                 .isvisible(menuRight.getIsvisible())
                 .icon(menuRight.getIcon())
                 .seq(menuRight.getSeq())

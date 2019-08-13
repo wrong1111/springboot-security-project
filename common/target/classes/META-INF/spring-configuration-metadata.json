@@ -1,0 +1,142 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy",
+      "type": "com.cebon.cdjcy.common.config.ApplicationConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.alarm-info",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.alarm-type",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.case-status",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.dev-code",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.dev-factory",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.dev-frame-rate",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.dev-resolution",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.dev-status",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.dev-type",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.dev-video-bitrate",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.dev-video-stream",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.enable-status",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.errorcodes",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.log-operation",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.log-type",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.origins",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.pagesize",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.sex-config",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.sortcolumn",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.sorttype",
+      "type": "com.cebon.cdjcy.common.config.ApplicationConfig$sortType"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.time-interval",
+      "type": "java.lang.Long"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.user-state",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.userlevel",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.video-analysis-u-r-l",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.video-clarity",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.common.config.ApplicationConfig",
+      "name": "cdjcy.video-quality",
+      "type": "java.util.Map<java.lang.Integer,java.lang.String>"
+    }
+  ]
+}

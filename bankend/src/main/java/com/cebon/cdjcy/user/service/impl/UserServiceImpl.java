@@ -2,7 +2,6 @@ package com.cebon.cdjcy.user.service.impl;
 
 import com.cebon.cdjcy.common.config.ApplicationConfig;
 import com.cebon.cdjcy.common.core.AbstractService;
-import com.cebon.cdjcy.common.util.PoiUtils;
 import com.cebon.cdjcy.common.restResult.PageParam;
 import com.cebon.cdjcy.user.dao.UserMapper;
 import com.cebon.cdjcy.user.domain.User;
@@ -12,20 +11,13 @@ import com.cebon.cdjcy.user.dto.UserOutpDTO;
 import com.cebon.cdjcy.user.service.UserService;
 import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @Service
@@ -128,63 +120,6 @@ public class UserServiceImpl extends AbstractService<User>  implements UserServi
     public List<UserOutpDTO> findListByArea(UserInputDTO inputDTO, PageParam pageParam) {
        PageHelper.startPage(pageParam.getPage(), pageParam.getSize());
        return userMapper.findListByArea(inputDTO);
-    }
-
-    // 导出用户列表
-    @Override
-    public ResponseEntity<byte[]> exportDeviceList(PageParam pageParam,UserInputDTO inputDTO) {
-        pageParam.setSize(0);  //查询全部
-        List<UserOutpDTO> data = this.findListByArea(inputDTO,pageParam);
-
-        Map<Integer, String> levelMap = applicationConfig.getUserlevel();
-        Long userId=1L;
-        for (UserOutpDTO dto : data) {
-//            System.out.println(dto.getLevelId());
-            dto.setId(userId);  //id顺序排列
-            userId+=1L;
-            dto.setLevelId(levelMap.get(dto.getLevelId()));
-            dto.setState((dto.getState().equals(1))?"允许":"禁止");
-        }
-
-        String[] headers = {"序号","用户编号","姓名","账号","职位","电话","角色","状态"};
-
-
-        PoiUtils poiUtils = new PoiUtils("用户列表", "导出模板.xls");
-        poiUtils.setHeaders(headers, "用户列表");
-
-        // 为excel表生成数据
-        poiUtils.fillDataAndStyle(data, 2);
-
-        // 将内容返回响应
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        try {
-            poiUtils.getWorkbook().write(bos);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (bos != null) {
-                try {
-                    bos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        // 文件名
-        String filename = "用户列表";
-        try {
-            filename = new String(filename.getBytes("gbk"), "iso8859-1");
-        } catch (UnsupportedEncodingException e) {
-            log.warn("不支持编码格式");
-            e.printStackTrace();
-
-        }
-        // 设置http响应头
-        HttpHeaders header = new HttpHeaders();
-        header.add("Content-Disposition", "attachment;filename=" + filename + ".xls");
-
-        return new ResponseEntity<byte[]>(bos.toByteArray(), header, HttpStatus.CREATED);
     }
 
 }

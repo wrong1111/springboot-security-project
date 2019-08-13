@@ -101,6 +101,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/fonts/**",
                 "/favicon.ico",
                 "/cdjcy/**",
+                "/user/curuser",
+                "/login/login.html",
+                "/html/**",
                 "/resources/**","/error","/status/*", "/swagger-ui.html", "/v2/**", "/webjars/**", "/swagger-resources/**");
     }
 

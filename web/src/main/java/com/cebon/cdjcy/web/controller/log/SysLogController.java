@@ -92,14 +92,4 @@ public class SysLogController {
         return ResultGenerator.genSuccessResult(list);
     }
 
-    /**
-     * 导出日志
-     * @return
-     */
-    @Log(description = "日志分页列表", value = 8, type = 8)
-    @ApiOperation(value = "导出日志列表", notes = "导出报表", code = 200, produces = "application/json")
-    @GetMapping(value = "/export")
-    public ResponseEntity<byte[]> exportSysLogList(@ApiParam(value = "查询条件") SysLogInputDTO inputDTO){
-        return sysLogService.exportLogList(inputDTO);
-    }
 }

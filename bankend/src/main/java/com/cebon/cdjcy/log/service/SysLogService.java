@@ -34,10 +34,4 @@ public interface SysLogService extends Service<SysLog> {
      */
     void deleteById(String ids);
 
-    /**
-     * 分页导出日志
-     * @param inputDTO
-     * @return
-     */
-    ResponseEntity<byte[]> exportLogList(SysLogInputDTO inputDTO);
 }

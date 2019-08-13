@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<head>
+    <base href="<%=basePath%>">
+    <meta content="text/html; charset=utf-8"></meta>
+    <title>菜单维护页面</title>
+    <link id="themes" rel="stylesheet" type="text/css" href="/css/admin/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/css/admin/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/admin/themes/icon.css">
+    <script type="text/javascript" src="/js/common/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/js/common/jquery.form.js"></script>
+    <script type="text/javascript" src="/js/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/js/easyui/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/js/common/datagrid-detailview.js"></script>
+    <link rel="stylesheet" type="text/css" href="/js/zTree_v3/css/zTreeStyle/zTreeStyle.css">
+    <script type="text/javascript" src="/js/zTree_v3/js/jquery.ztree.all-3.5.min.js"></script>
+    <script type="text/javascript" src="/js/security/base.js"></script>
+    <script type="text/javascript" src="/js/security/menu.js"></script>
+</head>
+<body class="easyui-layout" style="overflow-y: hidden" scroll="no">
+<div region="west" split="true" title="应用结构" style="width: 200px;" id="west">
+    <ul id="tree" class="ztree">
+    </ul>
+</div>
+<div region="center" style="width: 500px; height: 300px; padding: 1px; background: #eee;
+        overflow-y: hidden">
+    <table id="dataGridTable">
+    </table>
+    <div id="salecontrolToolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+           iconCls="icon-add" plain="true" onclick="menu.toAddInner();" )>添加菜单</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+           iconCls="icon-reload" plain="true" onclick="menu.refreshTree();" )>刷新菜单树</a> <br/>
+        <form action="security/menu" id="searchForm">
+            <input type="hidden" id="eq_pid" name="id" value=""/>
+        </form>
+    </div>
+</div>
+<div id="saveOrEdit" class="easyui-dialog"
+     style="top: 50px; width: 350px; height: 370px; padding: 10px;"
+     data-options="iconCls:'icon-save',resizable:false,modal:true,closed:true,buttons: '#salecontrol-buttons',cache: true">
+    <form action="">
+        <table>
+            <tr>
+                <td>菜单名称:</td>
+                <td>
+                    <input name="name" class="field easyui-validatebox" size="30" required="true"/>
+                </td>
+            </tr>
+            <tr>
+                <td>跳转地址:</td>
+                <td>
+                    <input name="urlpath" class="field" size="30"/>
+                </td>
+            </tr>
+            <tr>
+                <td>请求方式:</td>
+                <td>
+                    <input name="method" class="field easyui-validatebox" size="30"/>
+                </td>
+            </tr>
+            <tr>
+                <td>层级:</td>
+                <td>
+                    <input name="grades" class="field easyui-validatebox" size="30"/>
+                </td>
+            </tr>
+            <tr>
+                <td>层级序号:</td>
+                <td>
+                    <input name="seq" class="field easyui-validatebox" size="30"/>
+                </td>
+            </tr>
+            <tr>
+                <td>是否显示:</td>
+                <td>
+                    <select name="isvisible" class="field">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <input type="hidden" name="id" value="" class="field"/>
+        <input type="hidden" name="parentId" id="entity_pid"/>
+    </form>
+    <div id="salecontrol-buttons">
+        <a href="javascript:void(0)" onclick="menu.save();"
+           class="easyui-linkbutton">保存</a> <a href="javascript:void(0)"
+                                               class="easyui-linkbutton" onclick="menu.closeDialog();">取消</a>
+    </div>
+</div>
+</body>
+</html>

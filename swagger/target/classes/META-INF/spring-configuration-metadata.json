@@ -1,0 +1,47 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.cebon.cdjcy.swagger.SwaggerProperties",
+      "name": "swagger",
+      "type": "com.cebon.cdjcy.swagger.SwaggerProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.cebon.cdjcy.swagger.SwaggerProperties",
+      "name": "swagger.basepackage",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.swagger.SwaggerProperties",
+      "name": "swagger.contract-email",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.swagger.SwaggerProperties",
+      "name": "swagger.contract-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.swagger.SwaggerProperties",
+      "name": "swagger.contract-url",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.swagger.SwaggerProperties",
+      "name": "swagger.description",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.swagger.SwaggerProperties",
+      "name": "swagger.title",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.cebon.cdjcy.swagger.SwaggerProperties",
+      "name": "swagger.version",
+      "type": "java.lang.String"
+    }
+  ]
+}

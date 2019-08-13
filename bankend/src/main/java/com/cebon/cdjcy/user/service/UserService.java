@@ -109,11 +109,4 @@ public interface UserService extends Service<User> {
     public UserDTO findUserMessage(Long id);
 
 
-    /**
-     * 导出用户列表
-     * @param pageParam
-     * @param inputDTO 查询条件
-     */
-    ResponseEntity<byte[]> exportDeviceList(PageParam pageParam, UserInputDTO inputDTO);
-
 }
